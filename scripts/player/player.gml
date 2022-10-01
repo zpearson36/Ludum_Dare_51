@@ -1,7 +1,7 @@
 function Player() constructor
 {
 	deck = new Deck()
-	hand = instance_create_layer(0, 0, "GUI", oHand)
+	hand = instance_create_layer(TILEWIDTH * MAPWIDTH + 25, 25, "GUI", oHand)
 	xpos = 0
 	ypos = 0
 	sprite = sPlayer
@@ -10,6 +10,11 @@ function Player() constructor
 	{
 		xpos += _x
 		ypos += _y
+	}
+	
+	function get_hand()
+	{
+		return hand
 	}
 	
 	function is_hand_full()

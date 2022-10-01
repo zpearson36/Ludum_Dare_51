@@ -1,6 +1,7 @@
 {
   "resources": [
     {"id":{"name":"Player","path":"scripts/Player/Player.yy",},"order":2,},
+    {"id":{"name":"Utils","path":"scripts/Utils/Utils.yy",},"order":3,},
     {"id":{"name":"oGameManager","path":"objects/oGameManager/oGameManager.yy",},"order":0,},
     {"id":{"name":"oHand","path":"objects/oHand/oHand.yy",},"order":3,},
     {"id":{"name":"DEPRICATED","path":"objects/DEPRICATED/DEPRICATED.yy",},"order":1,},

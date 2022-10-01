@@ -6,7 +6,25 @@ defaultSize = 5
 
 function add_card(_card)
 {
-	array_push(contents, instance_create_layer(x, y, layer, oCard, {card: _card, number: array_length(contents)}))
+	var tmpCard =instance_create_layer(x, y, layer, oCard, {card: _card, number: array_length(contents)})
+	tmpCard.set_order(array_length(contents))
+	tmpCard.set_hand(self)
+	array_push(contents, tmpCard)
+}
+
+function remove_card(_card)
+{
+	var tmpCard = noone
+	for(var i = 0; i < array_length(contents); i++)
+	{
+		if(contents[i].id == _card.id)
+		{
+			tmpCard = contents[i].get_card_info()
+			instance_destroy(contents[i])
+			array_delete(contents, i, 1)
+		}
+	}
+	return tmpCard
 }
 
 function get_default_size()
