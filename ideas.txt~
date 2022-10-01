@@ -1,0 +1,26 @@
+Theme: Every 10 seconds
+
+Ideas:
+
+* Puzzle and/or platformer where game runs in 10 second chunks. in between
+  chunks, player inputs set of instructions that will run on the next chunk
+
+primary:
+- Deck Builder!! Cards provide possible instructions
+- - To start: 1 card = 1 sec
+- - - Basic cards:
+      - move 1 sqr
+      - attack once
+      - cast simple spell
+- - Card Rarity: More rare cards have better effects
+- Grid Based so movement can be accurately planned
+- Each Instruction given by card, will list time cost and ability
+- Top Down rogue lite dungeon crawler
+
+Secondary:
+- enemy behavior occurs during separate 10 seconds from player actions.
+- Equipment cards that add modifiers
+
+Tertiary:
+- rpg elements? (level, skills?)
+
