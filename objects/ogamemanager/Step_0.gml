@@ -11,9 +11,10 @@ if(keyboard_check_pressed(vk_space))
 }
 if(keyboard_check_pressed(vk_tab))
 {
-	gPlayer.deck.shuffle()
+	state = GAMESTATE.PLAY
+	/*gPlayer.deck.shuffle()
 	show_debug_message(gPlayer.deck.library)
-	show_debug_message(gPlayer.deck.discarded)
+	show_debug_message(gPlayer.deck.discarded)*/
 }
 
 
@@ -41,7 +42,55 @@ switch state
 		}
 		break;
 	}
-	case GAMESTATE.PLAY:{break;}
-	case GAMESTATE.DISCARD:{break;}
+	case GAMESTATE.PLAY:
+	{
+		while(gHand.get_current_size())
+		{
+			var tmpCard = noone
+			for(var i = 0; i < gHand.get_current_size(); i++)
+			{
+				if(tmpCard == noone) tmpCard = gHand.get_card_by_index(i)
+				else
+				{
+					if(gHand.get_card_by_index(i).get_order() < tmpCard) tmpCard = gHand.get_card_by_index(i)
+				}
+			}
+			switch(tmpCard.get_card_info().get_type())
+			{
+				case CARDTYPES.MOVEMENT:
+				{
+					var _x = 0
+					var _y = 0
+					for(var i = 0; i < array_length(tmpCard.get_card_info().get_value()); i++)
+					{
+						switch(tmpCard.get_card_info().get_value()[i])
+						{
+							case "A": {_x -= 1; break;}
+							case "S": {_y += 1; break;}
+							case "W": {_y -= 1; break;}
+							case "D": {_x += 1; break;}
+						}
+					}
+					gPlayer.move(_x, _y)
+					break;
+				}
+				case CARDTYPES.ATTACK:{break;}
+				case CARDTYPES.SPELL:{break;}
+			}
+			gPlayer.get_deck().discard(gHand.remove_card(tmpCard))
+		}
+		state = GAMESTATE.DISCARD
+		break;
+	}
+	case GAMESTATE.DISCARD:
+	{
+		while(gPlayer.get_hand().get_current_size())
+		{
+			gPlayer.get_deck().discard(gPlayer.get_hand().remove_card(gPlayer.get_hand().get_top_card()))
+		}
+		
+		state = GAMESTATE.DRAW
+		break;
+	}
 }
 //show_debug_message(inst_array)

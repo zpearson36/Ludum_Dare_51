@@ -2,8 +2,8 @@ function Player() constructor
 {
 	deck = new Deck()
 	hand = instance_create_layer(TILEWIDTH * MAPWIDTH + 25, 25, "GUI", oHand)
-	xpos = 0
-	ypos = 0
+	xpos = 7
+	ypos = 7
 	sprite = sPlayer
 	
 	function move(_x, _y)
@@ -12,6 +12,10 @@ function Player() constructor
 		ypos += _y
 	}
 	
+	function get_deck()
+	{
+		return deck
+	}
 	function get_hand()
 	{
 		return hand
@@ -36,15 +40,4 @@ function Player() constructor
 	{
 		return hand.get_current_size()
 	}
-	/*
-	function get_card(_index)
-	{
-		return currentHand[_index]
-	}
-	
-	function get_hand()
-	{
-		return currentHand
-	}
-	*/
 }

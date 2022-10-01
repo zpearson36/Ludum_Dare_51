@@ -5,6 +5,7 @@ enum CARDTYPES
 	SPELL,
 	EQUIPMENT
 }
+
 function Card(_name, _type, _value, _sprite) constructor
 {
 	name = _name
@@ -31,9 +32,19 @@ function Card(_name, _type, _value, _sprite) constructor
 	{
 		return sprite
 	}
+	
+	function get_type()
+	{
+		return type
+	}
 }
 
-global.move = ["Move", CARDTYPES.MOVEMENT, 1, sCardTemp]
+global.move = [
+	["Move", CARDTYPES.MOVEMENT, ["W"], sCardTemp],
+	["Move", CARDTYPES.MOVEMENT, ["S"], sCardTemp],
+	["Move", CARDTYPES.MOVEMENT, ["A"], sCardTemp],
+	["Move", CARDTYPES.MOVEMENT, ["D"], sCardTemp],
+]
 
 function Deck() constructor
 {

@@ -27,6 +27,16 @@ function remove_card(_card)
 	return tmpCard
 }
 
+function get_card_by_index(_index)
+{
+	return contents[_index]
+}
+
+function get_top_card()
+{
+	return contents[0]
+}
+
 function get_default_size()
 {
 	return defaultSize

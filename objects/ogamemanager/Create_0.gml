@@ -7,11 +7,12 @@ gMap.populate_map()
 
 //gPlayer = instance_create_layer(0, 0, "Player", oPlayer)
 gPlayer = new Player()
-gPlayer.deck.add_card(new Card(global.move[0]+string(1), global.move[1], global.move[2], global.move[3]))
-gPlayer.deck.add_card(new Card(global.move[0]+string(2), global.move[1], global.move[2], global.move[3]))
-gPlayer.deck.add_card(new Card(global.move[0]+string(3), global.move[1], global.move[2], global.move[3]))
-gPlayer.deck.add_card(new Card(global.move[0]+string(4), global.move[1], global.move[2], global.move[3]))
-gPlayer.deck.add_card(new Card(global.move[0]+string(5), global.move[1], global.move[2], global.move[3]))
+var tmpCd
+repeat(10)
+{
+	tmpCd = array_choose(global.move)
+	gPlayer.deck.add_card(new Card(tmpCd[0], tmpCd[1], tmpCd[2], tmpCd[3]))
+}
 
 gHand = instance_create_layer(TILEWIDTH * MAPWIDTH + 25, 525, "GUI", oHand)
 
