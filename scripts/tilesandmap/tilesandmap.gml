@@ -1,5 +1,5 @@
-#macro TILEWIDTH  32
-#macro TILEHEIGHT 32
+#macro TILEWIDTH  64
+#macro TILEHEIGHT 64
 #macro MAPWIDTH   16
 #macro MAPHEIGHT  16
 

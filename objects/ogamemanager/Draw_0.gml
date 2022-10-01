@@ -12,3 +12,11 @@ for(var i = 0; i < gMap.get_width(); i++)
 }
 
 draw_sprite(gPlayer.sprite, -1, gPlayer.xpos * TILEWIDTH, gPlayer.ypos * TILEHEIGHT)
+
+switch state
+{
+	case GAMESTATE.DRAW:{break;}
+	case GAMESTATE.SETINST:{break;}
+	case GAMESTATE.PLAY:{break;}
+	case GAMESTATE.DISCARD:{break;}
+}

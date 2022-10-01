@@ -1,7 +1,7 @@
 function Player() constructor
 {
 	deck = new Deck()
-	currentHand = []
+	hand = instance_create_layer(0, 0, "GUI", oHand)
 	xpos = 0
 	ypos = 0
 	sprite = sPlayer
@@ -12,13 +12,34 @@ function Player() constructor
 		ypos += _y
 	}
 	
-	function draw_hand(_handSize)
+	function is_hand_full()
 	{
-		if(_handSize > array_length(deck)) deck.shuffle()
-		if(_handSize > array_length(deck)) _handSize = array_length(deck)
-		for(var i = 0; i < _handSize; i++)
+		return hand.is_full()
+	}
+	
+	function draw_hand()
+	{	
+		while(not hand.is_full())
 		{
-			array_push(currentHand, deck.Draw())
+			var card = deck.draw()
+			if(not card) deck.shuffle()
+			else hand.add_card(card)
 		}
 	}
+	
+	function get_hand_size()
+	{
+		return hand.get_current_size()
+	}
+	/*
+	function get_card(_index)
+	{
+		return currentHand[_index]
+	}
+	
+	function get_hand()
+	{
+		return currentHand
+	}
+	*/
 }
