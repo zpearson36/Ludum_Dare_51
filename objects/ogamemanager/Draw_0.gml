@@ -1,6 +1,5 @@
 /// @description Insert description here
 // You can write your code in this editor
-
 for(var i = 0; i < gMap.get_width(); i++)
 {
 	for(var j = 0; j < gMap.get_width(); j++)
@@ -11,3 +10,5 @@ for(var i = 0; i < gMap.get_width(); i++)
 		draw_set_color(c_white)
 	}
 }
+
+draw_sprite(gPlayer.sprite, -1, gPlayer.xpos * TILEWIDTH, gPlayer.ypos * TILEHEIGHT)

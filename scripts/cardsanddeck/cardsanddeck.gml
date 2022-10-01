@@ -45,7 +45,11 @@ function Deck() constructor
 	
 	function shuffle()
 	{
-		return -1
+		for(var i = 0; i < array_length(discarded); i++)
+		{
+			array_push(library, discarded[i])
+		}
+		discarded = []
 	}
 }
 
