@@ -17,13 +17,15 @@ if(keyboard_check_pressed(vk_tab))
 	show_debug_message(gPlayer.deck.discarded)*/
 }
 
-
+var start = 0
 switch state
 {
 	case GAMESTATE.DRAW:
 	{
 		gPlayer.draw_hand()
 		state = GAMESTATE.SETINST
+		start = current_time
+		alarm[0] = 600
 		break;
 	}
 	case GAMESTATE.SETINST:
@@ -79,6 +81,7 @@ switch state
 			}
 			gPlayer.get_deck().discard(gHand.remove_card(tmpCard))
 		}
+		show_debug_message(current_time - start)
 		state = GAMESTATE.DISCARD
 		break;
 	}
@@ -93,4 +96,3 @@ switch state
 		break;
 	}
 }
-//show_debug_message(inst_array)
