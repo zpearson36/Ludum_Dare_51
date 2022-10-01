@@ -14,7 +14,7 @@ repeat(10)
 	gPlayer.deck.add_card(new Card(tmpCd[0], tmpCd[1], tmpCd[2], tmpCd[3]))
 }
 
-gHand = instance_create_layer(TILEWIDTH * MAPWIDTH + 25, 525, "GUI", oHand)
+gHand = instance_create_layer(TILEWIDTH * MAPWIDTH + 25, 537, "GUI", oHand)
 
 enum GAMESTATE
 {
@@ -26,6 +26,7 @@ enum GAMESTATE
 
 state = GAMESTATE.DRAW
 selected_card = noone
+run_card = true
 
 function set_selected_card(_card)
 {

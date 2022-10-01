@@ -46,7 +46,7 @@ switch state
 	}
 	case GAMESTATE.PLAY:
 	{
-		while(gHand.get_current_size())
+		if(run_card and gHand.get_current_size())
 		{
 			var tmpCard = noone
 			for(var i = 0; i < gHand.get_current_size(); i++)
@@ -54,7 +54,7 @@ switch state
 				if(tmpCard == noone) tmpCard = gHand.get_card_by_index(i)
 				else
 				{
-					if(gHand.get_card_by_index(i).get_order() < tmpCard) tmpCard = gHand.get_card_by_index(i)
+					if(gHand.get_card_by_index(i).get_order() > tmpCard) tmpCard = gHand.get_card_by_index(i)
 				}
 			}
 			switch(tmpCard.get_card_info().get_type())
@@ -80,9 +80,10 @@ switch state
 				case CARDTYPES.SPELL:{break;}
 			}
 			gPlayer.get_deck().discard(gHand.remove_card(tmpCard))
+			run_card = false
+			alarm[1] = 30
 		}
-		show_debug_message(current_time - start)
-		state = GAMESTATE.DISCARD
+		if(not gHand.get_current_size()) state = GAMESTATE.DISCARD
 		break;
 	}
 	case GAMESTATE.DISCARD:

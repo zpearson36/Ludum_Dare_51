@@ -12,7 +12,7 @@ for(var i = 0; i < gMap.get_width(); i++)
 }
 
 draw_sprite(gPlayer.sprite, -1, gPlayer.xpos * TILEWIDTH, gPlayer.ypos * TILEHEIGHT)
-draw_text(TILEWIDTH * MAPWIDTH + 25, 500, "INSTRUCTIONS:")
+draw_text(TILEWIDTH * MAPWIDTH + 25, 512, "INSTRUCTIONS:")
 
 switch state
 {
