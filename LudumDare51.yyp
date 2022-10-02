@@ -36,6 +36,7 @@
     {"id":{"name":"fNormal","path":"fonts/fNormal/fNormal.yy",},"order":1,},
     {"id":{"name":"bg_gui","path":"sprites/bg_gui/bg_gui.yy",},"order":0,},
     {"id":{"name":"sPotion","path":"sprites/sPotion/sPotion.yy",},"order":16,},
+    {"id":{"name":"sPlayField","path":"sprites/sPlayField/sPlayField.yy",},"order":21,},
     {"id":{"name":"sPlayer","path":"sprites/sPlayer/sPlayer.yy",},"order":0,},
     {"id":{"name":"click_sprite","path":"scripts/click_sprite/click_sprite.yy",},"order":1,},
     {"id":{"name":"slider_sprite","path":"scripts/slider_sprite/slider_sprite.yy",},"order":8,},
