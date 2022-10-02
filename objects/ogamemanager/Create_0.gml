@@ -14,12 +14,15 @@ gPlayer = new Player()
 enemy_list = []
 
 array_push(enemy_list, new Enemy())
-var tmpCd
-repeat(10)
-{
-	tmpCd = array_choose(global.move)
-	gPlayer.deck.add_card(new Card(tmpCd[0], tmpCd[1], tmpCd[2], tmpCd[3]))
-}
+gPlayer.deck.add_card(new Card(global.move[0][0], global.move[0][1], global.move[0][2], global.move[0][3]))
+gPlayer.deck.add_card(new Card(global.move[0][0], global.move[0][1], global.move[0][2], global.move[0][3]))*
+gPlayer.deck.add_card(new Card(global.move[1][0], global.move[1][1], global.move[1][2], global.move[1][3]))
+gPlayer.deck.add_card(new Card(global.move[1][0], global.move[1][1], global.move[1][2], global.move[1][3]))
+gPlayer.deck.add_card(new Card(global.move[2][0], global.move[2][1], global.move[2][2], global.move[2][3]))
+gPlayer.deck.add_card(new Card(global.move[2][0], global.move[2][1], global.move[2][2], global.move[2][3]))
+gPlayer.deck.add_card(new Card(global.move[3][0], global.move[3][1], global.move[3][2], global.move[3][3]))
+gPlayer.deck.add_card(new Card(global.move[3][0], global.move[3][1], global.move[3][2], global.move[3][3]))
+
 
 gHand = instance_create_layer(TILEWIDTH * MAPWIDTH + 25, 537, "GUI", oHand)
 enemyIndex = 0

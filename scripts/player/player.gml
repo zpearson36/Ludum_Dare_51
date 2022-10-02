@@ -35,7 +35,7 @@ function Player() constructor
 		}
 		else
 		{
-			tmpTile.get_occupant().damage(5)
+			tmpTile.get_occupant().damage(1)
 		}
 		oGameManager.get_map().get_tile(xpos, ypos).set_occupant(self)
 	}

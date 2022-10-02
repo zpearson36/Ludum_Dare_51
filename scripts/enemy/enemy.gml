@@ -1,7 +1,7 @@
 function Enemy() constructor
 {
-	xpos = 5
-	ypos = 7
+	xpos = 3
+	ypos = 2
 	sprite = sEnemy
 	hp = 5
 	max_ap = 2
