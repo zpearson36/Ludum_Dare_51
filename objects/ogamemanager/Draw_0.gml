@@ -17,12 +17,16 @@ for(var i = 0; i < gMap.get_width(); i++)
 	}
 }
 
+draw_text(TILEWIDTH * MAPWIDTH + 25, 25, "Health: " + string(gPlayer.get_hp()) + " / " + string(gPlayer.get_max_hp()))
+draw_healthbar(TILEWIDTH * MAPWIDTH + 25, 50,TILEWIDTH * MAPWIDTH + 225, 75, (gPlayer.get_hp() / gPlayer.get_max_hp()) * 100, c_black, c_red, c_lime, 0, true, true)
+
 for(var i = 0; i < array_length(enemy_list); i++)
 {
 	draw_sprite(enemy_list[i].sprite, -1, enemy_list[i].xpos * TILEWIDTH, enemy_list[i].ypos * TILEHEIGHT)
 }
 
 draw_sprite(gPlayer.sprite, -1, gPlayer.xpos * TILEWIDTH, gPlayer.ypos * TILEHEIGHT)
+draw_text(TILEWIDTH * MAPWIDTH + 25, 150, "HAND:")
 draw_text(TILEWIDTH * MAPWIDTH + 25, 512, "INSTRUCTIONS:")
 
 switch state

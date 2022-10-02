@@ -1,15 +1,21 @@
 function Player() constructor
 {
 	deck = new Deck()
-	hand = instance_create_layer(TILEWIDTH * MAPWIDTH + 25, 25, "GUI", oHand)
+	hand = instance_create_layer(TILEWIDTH * MAPWIDTH + 25, 175, "GUI", oHand)
 	xpos = 3
 	ypos = 3
 	sprite = sPlayer
+	max_hp = 5
 	hp = 5
 	
 	function get_hp()
 	{
 		return hp
+	}
+	
+	function get_max_hp()
+	{
+		return max_hp
 	}
 	
 	function move(_x, _y)

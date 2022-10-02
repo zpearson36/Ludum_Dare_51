@@ -15,7 +15,7 @@ enemy_list = []
 
 array_push(enemy_list, new Enemy())
 gPlayer.deck.add_card(new Card(global.move[0][0], global.move[0][1], global.move[0][2], global.move[0][3]))
-gPlayer.deck.add_card(new Card(global.move[0][0], global.move[0][1], global.move[0][2], global.move[0][3]))*
+gPlayer.deck.add_card(new Card(global.move[0][0], global.move[0][1], global.move[0][2], global.move[0][3]))
 gPlayer.deck.add_card(new Card(global.move[1][0], global.move[1][1], global.move[1][2], global.move[1][3]))
 gPlayer.deck.add_card(new Card(global.move[1][0], global.move[1][1], global.move[1][2], global.move[1][3]))
 gPlayer.deck.add_card(new Card(global.move[2][0], global.move[2][1], global.move[2][2], global.move[2][3]))
