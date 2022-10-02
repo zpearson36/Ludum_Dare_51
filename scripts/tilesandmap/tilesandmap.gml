@@ -19,6 +19,7 @@ global.hole =   [TILECONTENTS.HOLE, 1]
 function Tile() constructor
 {
 	contents = global.open;
+	occupant = noone
 	
 	function get_contents()
 	{
@@ -28,6 +29,21 @@ function Tile() constructor
 	function set_contents(_contents)
 	{
 		contents = _contents
+	}
+	
+	function get_occupant()
+	{
+		return occupant
+	}
+	
+	function set_occupant(_occ)
+	{
+		occupant = _occ
+	}
+	
+	function set_no_occupant()
+	{
+		occupant = noone
 	}
 }
 

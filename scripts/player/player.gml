@@ -59,4 +59,19 @@ function Player() constructor
 	{
 		return hand.get_current_size()
 	}
+	
+	function get_x()
+	{
+		return xpos
+	}
+	
+	function get_y()
+	{
+		return ypos
+	}
+	
+	function damage(_dmg)
+	{
+		hp -= _dmg
+	}
 }

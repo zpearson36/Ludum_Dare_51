@@ -17,6 +17,11 @@ for(var i = 0; i < gMap.get_width(); i++)
 	}
 }
 
+for(var i = 0; i < array_length(enemy_list); i++)
+{
+	draw_sprite(enemy_list[i].sprite, -1, enemy_list[i].xpos * TILEWIDTH, enemy_list[i].ypos * TILEHEIGHT)
+}
+
 draw_sprite(gPlayer.sprite, -1, gPlayer.xpos * TILEWIDTH, gPlayer.ypos * TILEHEIGHT)
 draw_text(TILEWIDTH * MAPWIDTH + 25, 512, "INSTRUCTIONS:")
 

@@ -17,6 +17,8 @@ if(keyboard_check_pressed(vk_tab))
 	show_debug_message(gPlayer.deck.discarded)*/
 }
 
+//print(gMap.get_tile(floor(mouse_x / TILEWIDTH), floor(mouse_y / TILEHEIGHT)).get_occupant())
+
 var start = 0
 switch state
 {
@@ -25,7 +27,7 @@ switch state
 		gPlayer.draw_hand()
 		state = GAMESTATE.SETINST
 		start = current_time
-		alarm[0] = 600
+		alarm[0] = 60
 		break;
 	}
 	case GAMESTATE.SETINST:
@@ -93,9 +95,24 @@ switch state
 		{
 			gPlayer.get_deck().discard(gPlayer.get_hand().remove_card(gPlayer.get_hand().get_top_card()))
 		}
-		
-		state = GAMESTATE.DRAW
+		enemyIndex = 0
+		state = GAMESTATE.ENEMY
+		break;
+	}
+	case GAMESTATE.ENEMY:
+	{
+		if(run_card)
+		{
+			enemy_list[enemyIndex].move()
+			run_card = false
+			alarm[1] = 30
+		}
+		if(enemy_list[enemyIndex].get_ap() == 0)
+		{
+			enemy_list[enemyIndex].reset_ap()
+			enemyIndex += 1
+		}
+		if(enemyIndex == array_length(enemy_list))state = GAMESTATE.DRAW
 		break;
 	}
 }
-print(gPlayer.get_hp())
