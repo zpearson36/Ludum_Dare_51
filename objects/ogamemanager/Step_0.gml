@@ -27,7 +27,7 @@ switch state
 		gPlayer.draw_hand()
 		state = GAMESTATE.SETINST
 		start = current_time
-		alarm[0] = 60
+		alarm[0] = 600
 		break;
 	}
 	case GAMESTATE.SETINST:
@@ -85,7 +85,6 @@ switch state
 			run_card = false
 			alarm[1] = 30
 		}
-		if(gPlayer.get_hp() <= 0) game_end()
 		if(not gHand.get_current_size()) state = GAMESTATE.DISCARD
 		break;
 	}
@@ -101,16 +100,19 @@ switch state
 	}
 	case GAMESTATE.ENEMY:
 	{
-		if(run_card)
+		if(array_length(enemy_list) > 0)
 		{
-			enemy_list[enemyIndex].move()
-			run_card = false
-			alarm[1] = 30
-		}
-		if(enemy_list[enemyIndex].get_ap() == 0)
-		{
-			enemy_list[enemyIndex].reset_ap()
-			enemyIndex += 1
+			if(run_card)
+			{
+				enemy_list[enemyIndex].move()
+				run_card = false
+				alarm[1] = 30
+			}
+			if(enemy_list[enemyIndex].get_ap() == 0)
+			{
+				enemy_list[enemyIndex].reset_ap()
+				enemyIndex += 1
+			}
 		}
 		if(enemyIndex == array_length(enemy_list))state = GAMESTATE.DRAW
 		break;

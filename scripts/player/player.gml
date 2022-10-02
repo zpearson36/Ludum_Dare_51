@@ -14,21 +14,30 @@ function Player() constructor
 	
 	function move(_x, _y)
 	{
+		oGameManager.get_map().get_tile(xpos, ypos).set_no_occupant()
 		var tmpTile = oGameManager.gMap.get_tile(xpos + _x, ypos + _y)
-		switch(tmpTile.get_contents()[0])
+		if(tmpTile.get_occupant() == noone)
 		{
-			case TILECONTENTS.WALL:{break;}
-			case TILECONTENTS.SPIKES:
+			switch(tmpTile.get_contents()[0])
 			{
-				hp -= tmpTile.get_contents()[1]
-			}
-			case TILECONTENTS.NONE:
-			{
-				xpos += _x
-				ypos += _y
-				break;
+				case TILECONTENTS.WALL:{break;}
+				case TILECONTENTS.SPIKES:
+				{
+					hp -= tmpTile.get_contents()[1]
+				}
+				case TILECONTENTS.NONE:
+				{
+					xpos += _x
+					ypos += _y
+					break;
+				}
 			}
 		}
+		else
+		{
+			tmpTile.get_occupant().damage(5)
+		}
+		oGameManager.get_map().get_tile(xpos, ypos).set_occupant(self)
 	}
 	
 	function get_deck()
