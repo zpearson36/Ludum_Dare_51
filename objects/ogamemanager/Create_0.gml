@@ -25,7 +25,7 @@ gPlayer.deck.add_card(new Card(global.move[3][0], global.move[3][1], global.move
 gPlayer.deck.add_card(new Card(global.move[4][0], global.move[4][1], global.move[4][2], global.move[4][3]))
 gPlayer.deck.add_card(new Card(global.move[4][0], global.move[4][1], global.move[4][2], global.move[4][3]))
 
-
+gGui = instance_create_layer(0, 0, "GUI", oGui)
 gHand = instance_create_layer(TILEWIDTH * MAPWIDTH + 25, 537, "GUI", oHand)
 enemyIndex = 0
 enum GAMESTATE
@@ -34,7 +34,10 @@ enum GAMESTATE
 	SETINST,
 	PLAY,
 	DISCARD,
-	ENEMY
+	ENEMY,
+	STARTPAUSE,
+	PAUSE,
+	UNPAUSE
 }
 
 
@@ -70,4 +73,36 @@ function get_player()
 function get_map()
 {
 	return gMap
+}
+
+function get_state()
+{
+	return state
+}
+
+//PAUSE VARIABLES
+pState = undefined
+alarm0 = -1
+alarm1 = -1
+
+function pause()
+{
+	pState = state
+	alarm0 = alarm[0]
+	alarm1 = alarm[1]
+	alarm[0] = -1
+	alarm[1] = -1
+	state = GAMESTATE.PAUSE
+}
+
+function unpause()
+{
+	alarm[0] = alarm0
+	alarm[1] = alarm1
+	state = pState
+}
+
+function quit()
+{
+	room_goto(rMainMenu)
 }

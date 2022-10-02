@@ -15,4 +15,5 @@ switch state
 	}
 	case GAMESTATE.PLAY:{break;}
 	case GAMESTATE.DISCARD:{break;}
+	case GAMESTATE.PAUSE:{break;}
 }

@@ -76,5 +76,8 @@ function draw_button_sprite() {
 	draw_set_valign(fa_top);
 	draw_text(xx+(sprite_get_width(spr_index)*1.25), yy, string_hash_to_newline(label));
 	}
+	
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_top);
 	return r;
 }

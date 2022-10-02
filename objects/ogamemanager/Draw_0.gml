@@ -35,4 +35,13 @@ switch state
 	case GAMESTATE.SETINST:{break;}
 	case GAMESTATE.PLAY:{break;}
 	case GAMESTATE.DISCARD:{break;}
+	case GAMESTATE.PAUSE:
+	{
+		draw_set_color(c_black)
+		draw_set_alpha(.5)
+		draw_rectangle(0, 0, room_width, room_height, false)
+		draw_set_color(c_white)
+		draw_set_alpha(1)
+		break;
+	}
 }

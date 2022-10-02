@@ -121,4 +121,5 @@ switch state
 		if(enemyIndex == array_length(enemy_list))state = GAMESTATE.DRAW
 		break;
 	}
+	case GAMESTATE.PAUSE:{break;}
 }
