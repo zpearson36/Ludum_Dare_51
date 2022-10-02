@@ -40,10 +40,10 @@ function Card(_name, _type, _value, _sprite) constructor
 }
 
 global.move = [
-	["Move", CARDTYPES.MOVEMENT, ["W"], sCardTemp],
-	["Move", CARDTYPES.MOVEMENT, ["S"], sCardTemp],
-	["Move", CARDTYPES.MOVEMENT, ["A"], sCardTemp],
-	["Move", CARDTYPES.MOVEMENT, ["D"], sCardTemp],
+	["Move", CARDTYPES.MOVEMENT, ["W"], sMoveUp],
+	["Move", CARDTYPES.MOVEMENT, ["S"], sMoveDown],
+	["Move", CARDTYPES.MOVEMENT, ["A"], sMoveLeft],
+	["Move", CARDTYPES.MOVEMENT, ["D"], sMoveRight],
 ]
 
 function Deck() constructor
