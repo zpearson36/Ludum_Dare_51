@@ -2,7 +2,7 @@
 // You can write your code in this editor
 
 contents = []
-defaultSize = 10
+defaultSize = 5
 
 function add_card(_card)
 {

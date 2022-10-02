@@ -8,6 +8,12 @@ for(var i = 0; i < gMap.get_width(); i++)
 		draw_set_color(c_black)
 		draw_rectangle(i * TILEWIDTH, j * TILEHEIGHT, (i + 1) * TILEWIDTH - 2, (j + 1) * TILEHEIGHT - 2, true)
 		draw_set_color(c_white)
+		switch(gMap.get_tile(i, j).get_contents()[0])
+		{
+			case TILECONTENTS.WALL:   {draw_sprite(sWall, -1, i * TILEWIDTH, j * TILEHEIGHT);break;}
+			case TILECONTENTS.SPIKES: {draw_sprite(sSpikes, -1, i * TILEWIDTH, j * TILEHEIGHT);break;}
+			case TILECONTENTS.NONE:   {break;}
+		}
 	}
 }
 

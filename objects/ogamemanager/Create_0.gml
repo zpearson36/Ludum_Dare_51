@@ -4,6 +4,9 @@ randomize()
 
 gMap = new Map(MAPWIDTH, MAPHEIGHT)
 gMap.populate_map()
+gMap.get_tile(2, 2).set_contents(global.spikes)
+gMap.get_tile(2, 3).set_contents(global.spikes)
+gMap.get_tile(2, 4).set_contents(global.spikes)
 
 //gPlayer = instance_create_layer(0, 0, "Player", oPlayer)
 gPlayer = new Player()

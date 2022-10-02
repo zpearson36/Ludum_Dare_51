@@ -83,6 +83,7 @@ switch state
 			run_card = false
 			alarm[1] = 30
 		}
+		if(gPlayer.get_hp() <= 0) game_end()
 		if(not gHand.get_current_size()) state = GAMESTATE.DISCARD
 		break;
 	}
@@ -97,3 +98,4 @@ switch state
 		break;
 	}
 }
+print(gPlayer.get_hp())
