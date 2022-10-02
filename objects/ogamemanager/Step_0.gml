@@ -1,24 +1,15 @@
-if(keyboard_check_pressed(ord("W"))) gPlayer.ypos -= 1
-if(keyboard_check_pressed(ord("S"))) gPlayer.ypos += 1
-if(keyboard_check_pressed(ord("A"))) gPlayer.xpos -= 1
-if(keyboard_check_pressed(ord("D"))) gPlayer.xpos += 1
+if(keyboard_check_pressed(ord("W"))) gPlayer.move(0, -1)
+if(keyboard_check_pressed(ord("S"))) gPlayer.move(0, 1)
+if(keyboard_check_pressed(ord("A"))) gPlayer.move(-1, 0)
+if(keyboard_check_pressed(ord("D"))) gPlayer.move(1, 0)
 if(keyboard_check_pressed(vk_space))
 {
-	var card = gPlayer.deck.draw()
-	if(card) gPlayer.deck.discard(card)
-	show_debug_message(gPlayer.deck.library)
-	show_debug_message(gPlayer.deck.discarded)
+	print(gMap.get_tile(floor(mouse_x / TILEWIDTH),floor(mouse_y / TILEHEIGHT)).get_occupant())
 }
 if(keyboard_check_pressed(vk_tab))
 {
 	state = GAMESTATE.PLAY
-	/*gPlayer.deck.shuffle()
-	show_debug_message(gPlayer.deck.library)
-	show_debug_message(gPlayer.deck.discarded)*/
 }
-
-//print(gMap.get_tile(floor(mouse_x / TILEWIDTH), floor(mouse_y / TILEHEIGHT)).get_occupant())
-
 var start = 0
 switch state
 {
@@ -75,10 +66,10 @@ switch state
 							case "D": {_x += 1; break;}
 						}
 					}
-					if(gPlayer.get_x() + _x < 0)               {gMap = gDungeon.move_left(); gPlayer.move((MAPWIDTH - 1), 0)}
-					else if(gPlayer.get_x() + _x >= MAPWIDTH)  {gMap = gDungeon.move_right();gPlayer.move(-(MAPWIDTH - 1), 0)}
-					else if(gPlayer.get_y() + _y < 0)          {gMap = gDungeon.move_up();   gPlayer.move(0, MAPHEIGHT - 1)}
-					else if(gPlayer.get_y() + _y >= MAPHEIGHT) {gMap = gDungeon.move_down(); gPlayer.move(0, -(MAPHEIGHT - 1))}
+					     if(gPlayer.get_x() + _x < 0)          {gMap.get_tile(gPlayer.get_x(), gPlayer.get_y()).set_no_occupant(); gMap = gDungeon.move_left(); gPlayer.move(  (MAPWIDTH - 1), 0)}
+					else if(gPlayer.get_x() + _x >= MAPWIDTH)  {gMap.get_tile(gPlayer.get_x(), gPlayer.get_y()).set_no_occupant(); gMap = gDungeon.move_right();gPlayer.move( -(MAPWIDTH - 1), 0)}
+					else if(gPlayer.get_y() + _y < 0)          {gMap.get_tile(gPlayer.get_x(), gPlayer.get_y()).set_no_occupant(); gMap = gDungeon.move_up();   gPlayer.move(0,  (MAPHEIGHT - 1))}
+					else if(gPlayer.get_y() + _y >= MAPHEIGHT) {gMap.get_tile(gPlayer.get_x(), gPlayer.get_y()).set_no_occupant(); gMap = gDungeon.move_down(); gPlayer.move(0, -(MAPHEIGHT - 1))}
 					else gPlayer.move(_x, _y)
 					break;
 				}

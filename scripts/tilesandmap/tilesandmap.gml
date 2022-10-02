@@ -117,7 +117,33 @@ function Dungeon() constructor
 				}
 			}
 		}
+		//remove walls that border room without corresponding wall in next room
+	    for(var i = 0; i < DUNGEONWIDTH; i++)
+		{
+			for(var j = 0; j < DUNGEONHEIGHT; j++)
+			{
+				for(var m = 0; m < MAPWIDTH; m++)
+				{
+					for(var n = 0; n < MAPHEIGHT; n++)
+					{
+						var noWall = false
+						if(dungeon[# i, j].get_tile(m, n).get_contents()[0] == TILECONTENTS.WALL)
+						{
+							print(string(i) + ", " + string(j) + ", " + string(n) + ", " + string(m))
+						    if(n == 0 and j > 0 and dungeon[# i, j - 1].get_tile(m, MAPHEIGHT - 1).get_contents()[0] != TILECONTENTS.WALL) noWall = true
+						    if(n == MAPHEIGHT - 1 and j < DUNGEONHEIGHT - 1 and dungeon[# i, j + 1].get_tile(m, 0).get_contents()[0] != TILECONTENTS.WALL) noWall = true
+							if(m == 0 and i > 0 and dungeon[# i - 1, j].get_tile(MAPWIDTH - 1, n).get_contents()[0] != TILECONTENTS.WALL) noWall = true
+						    if(m == MAPWIDTH - 1 and i < DUNGEONWIDTH - 1 and dungeon[# i + 1, j].get_tile(0, n).get_contents()[0] != TILECONTENTS.WALL) noWall = true
+							
+						}
+						if(noWall) dungeon[# i, j].get_tile(m, n).set_contents(global.open)
+					}
+				}
+			}
+		}
 	}
+	
+
 	
 	function set_pos(_x, _y)
 	{
