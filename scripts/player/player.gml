@@ -26,6 +26,7 @@ function Player() constructor
 	function move(_x, _y)
 	{
 		oGameManager.get_map().get_tile(xpos, ypos).set_no_occupant()
+		print(string(xpos + _x) + ", " + string(ypos + _y))
 		var tmpTile = oGameManager.gMap.get_tile(xpos + _x, ypos + _y)
 		if(tmpTile.get_occupant() == noone)
 		{

@@ -1,19 +1,16 @@
 /// @description Insert description here
 // You can write your code in this editor
 randomize()
-
-gMap = new Map(MAPWIDTH, MAPHEIGHT)
-gMap.populate_map()
-gMap.get_tile(2, 2).set_contents(global.spikes)
-gMap.get_tile(2, 3).set_contents(global.spikes)
-gMap.get_tile(2, 4).set_contents(global.spikes)
-
+gDungeon = new Dungeon()
+gDungeon.init()
+gMap = gDungeon.get_map(3,3)
 //gPlayer = instance_create_layer(0, 0, "Player", oPlayer)
 gPlayer = new Player()
 
 enemy_list = []
 
-array_push(enemy_list, new Enemy())
+
+//array_push(enemy_list, new Enemy())
 gPlayer.deck.add_card(new Card(global.move[0][0], global.move[0][1], global.move[0][2], global.move[0][3]))
 gPlayer.deck.add_card(new Card(global.move[0][0], global.move[0][1], global.move[0][2], global.move[0][3]))
 gPlayer.deck.add_card(new Card(global.move[1][0], global.move[1][1], global.move[1][2], global.move[1][3]))

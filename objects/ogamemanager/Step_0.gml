@@ -75,7 +75,11 @@ switch state
 							case "D": {_x += 1; break;}
 						}
 					}
-					gPlayer.move(_x, _y)
+					if(gPlayer.get_x() + _x < 0)               {gMap = gDungeon.move_left(); gPlayer.move((MAPWIDTH - 1), 0)}
+					else if(gPlayer.get_x() + _x >= MAPWIDTH)  {gMap = gDungeon.move_right();gPlayer.move(-(MAPWIDTH - 1), 0)}
+					else if(gPlayer.get_y() + _y < 0)          {gMap = gDungeon.move_up();   gPlayer.move(0, MAPHEIGHT - 1)}
+					else if(gPlayer.get_y() + _y >= MAPHEIGHT) {gMap = gDungeon.move_down(); gPlayer.move(0, -(MAPHEIGHT - 1))}
+					else gPlayer.move(_x, _y)
 					break;
 				}
 				case CARDTYPES.ITEM:
