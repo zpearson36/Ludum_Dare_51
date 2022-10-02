@@ -18,6 +18,11 @@ function Player() constructor
 		return max_hp
 	}
 	
+	function heal_hp(_hp)
+	{
+		hp = min(hp + _hp, max_hp)
+	}
+	
 	function move(_x, _y)
 	{
 		oGameManager.get_map().get_tile(xpos, ypos).set_no_occupant()

@@ -22,6 +22,8 @@ gPlayer.deck.add_card(new Card(global.move[2][0], global.move[2][1], global.move
 gPlayer.deck.add_card(new Card(global.move[2][0], global.move[2][1], global.move[2][2], global.move[2][3]))
 gPlayer.deck.add_card(new Card(global.move[3][0], global.move[3][1], global.move[3][2], global.move[3][3]))
 gPlayer.deck.add_card(new Card(global.move[3][0], global.move[3][1], global.move[3][2], global.move[3][3]))
+gPlayer.deck.add_card(new Card(global.move[4][0], global.move[4][1], global.move[4][2], global.move[4][3]))
+gPlayer.deck.add_card(new Card(global.move[4][0], global.move[4][1], global.move[4][2], global.move[4][3]))
 
 
 gHand = instance_create_layer(TILEWIDTH * MAPWIDTH + 25, 537, "GUI", oHand)

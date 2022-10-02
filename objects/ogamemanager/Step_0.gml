@@ -78,7 +78,11 @@ switch state
 					gPlayer.move(_x, _y)
 					break;
 				}
-				case CARDTYPES.ATTACK:{break;}
+				case CARDTYPES.ITEM:
+				{
+					gPlayer.heal_hp(tmpCard.get_card_info().get_value())
+					break;
+				}
 				case CARDTYPES.SPELL:{break;}
 			}
 			gPlayer.get_deck().discard(gHand.remove_card(tmpCard))

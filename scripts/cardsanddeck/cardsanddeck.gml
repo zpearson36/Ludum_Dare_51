@@ -1,8 +1,8 @@
 enum CARDTYPES
 {
 	MOVEMENT,
-	ATTACK,
 	SPELL,
+	ITEM,
 	EQUIPMENT
 }
 
@@ -44,6 +44,7 @@ global.move = [
 	["Move", CARDTYPES.MOVEMENT, ["S"], sMoveDown],
 	["Move", CARDTYPES.MOVEMENT, ["A"], sMoveLeft],
 	["Move", CARDTYPES.MOVEMENT, ["D"], sMoveRight],
+	["Potion", CARDTYPES.ITEM, 5, sPotion],
 ]
 
 function Deck() constructor
