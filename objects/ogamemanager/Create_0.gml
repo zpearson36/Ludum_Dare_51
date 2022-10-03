@@ -11,16 +11,11 @@ enemy_list = gMap.get_occupants()
 
 
 //array_push(enemy_list, new Enemy())
-gPlayer.deck.add_card(new Card(global.move[0][0], global.move[0][1], global.move[0][2], global.move[0][3]))
-gPlayer.deck.add_card(new Card(global.move[0][0], global.move[0][1], global.move[0][2], global.move[0][3]))
-gPlayer.deck.add_card(new Card(global.move[1][0], global.move[1][1], global.move[1][2], global.move[1][3]))
-gPlayer.deck.add_card(new Card(global.move[1][0], global.move[1][1], global.move[1][2], global.move[1][3]))
-gPlayer.deck.add_card(new Card(global.move[2][0], global.move[2][1], global.move[2][2], global.move[2][3]))
-gPlayer.deck.add_card(new Card(global.move[2][0], global.move[2][1], global.move[2][2], global.move[2][3]))
-gPlayer.deck.add_card(new Card(global.move[3][0], global.move[3][1], global.move[3][2], global.move[3][3]))
-gPlayer.deck.add_card(new Card(global.move[3][0], global.move[3][1], global.move[3][2], global.move[3][3]))
-gPlayer.deck.add_card(new Card(global.move[4][0], global.move[4][1], global.move[4][2], global.move[4][3]))
-gPlayer.deck.add_card(new Card(global.move[4][0], global.move[4][1], global.move[4][2], global.move[4][3]))
+gPlayer.deck.add_card(new Card(global.common[0][0], global.common[0][1], global.common[0][2], global.common[0][3]))
+gPlayer.deck.add_card(new Card(global.common[1][0], global.common[1][1], global.common[1][2], global.common[1][3]))
+gPlayer.deck.add_card(new Card(global.common[2][0], global.common[2][1], global.common[2][2], global.common[2][3]))
+gPlayer.deck.add_card(new Card(global.common[3][0], global.common[3][1], global.common[3][2], global.common[3][3]))
+gPlayer.deck.add_card(new Card(global.common[4][0], global.common[4][1], global.common[4][2], global.common[4][3]))
 
 gGui = instance_create_layer(0, 0, "GUI", oGui)
 gHand = instance_create_layer(TILEWIDTH * MAPWIDTH + 25, 537, "GUI", oHand)
@@ -34,7 +29,8 @@ enum GAMESTATE
 	ENEMY,
 	STARTPAUSE,
 	PAUSE,
-	UNPAUSE
+	UNPAUSE,
+	LOOT
 }
 
 
@@ -81,6 +77,7 @@ function get_state()
 pState = undefined
 alarm0 = -1
 alarm1 = -1
+lootCard = noone
 
 function pause()
 {
@@ -92,8 +89,22 @@ function pause()
 	state = GAMESTATE.PAUSE
 }
 
+function loot()
+{
+	pState = state
+	alarm0 = alarm[0]
+	alarm1 = alarm[1]
+	alarm[0] = -1
+	alarm[1] = -1
+	lootCard = random_card()
+	print(lootCard)
+	state = GAMESTATE.LOOT
+}
+
 function unpause()
 {
+	
+	lootCard = noone
 	alarm[0] = alarm0
 	alarm[1] = alarm1
 	state = pState
@@ -116,4 +127,9 @@ function change_room(_dir)
 	}
 	enemy_list = gMap.get_occupants()
 	//print(enemy_list)
+}
+
+function get_loot_card()
+{
+	return lootCard
 }

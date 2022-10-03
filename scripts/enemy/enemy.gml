@@ -21,6 +21,7 @@ function Enemy(_x=3, _y=2) constructor
 	}
 	function move()
 	{
+		if(array_length(get_path()) == 0) set_path(pathfinding(self, oGameManager.get_player()))
 		oGameManager.get_map().get_tile(xpos, ypos).set_no_occupant()
 		
 		var nxt = path[array_length(path) - 1]

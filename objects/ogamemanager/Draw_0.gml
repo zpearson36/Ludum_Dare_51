@@ -12,6 +12,7 @@ for(var i = 0; i < gMap.get_width(); i++)
 		{
 			case TILECONTENTS.WALL:   {draw_sprite(sWall, -1, i * TILEWIDTH, j * TILEHEIGHT);break;}
 			case TILECONTENTS.SPIKES: {draw_sprite(sSpikes, -1, i * TILEWIDTH, j * TILEHEIGHT);break;}
+			case TILECONTENTS.LOOT:   {draw_sprite(sLoot, -1, i * TILEWIDTH, j * TILEHEIGHT);break;}
 			case TILECONTENTS.NONE:   {break;}
 		}
 	}
@@ -35,13 +36,6 @@ switch state
 	case GAMESTATE.SETINST:{break;}
 	case GAMESTATE.PLAY:{break;}
 	case GAMESTATE.DISCARD:{break;}
-	case GAMESTATE.PAUSE:
-	{
-		draw_set_color(c_black)
-		draw_set_alpha(.5)
-		draw_rectangle(0, 0, room_width, room_height, false)
-		draw_set_color(c_white)
-		draw_set_alpha(1)
-		break;
-	}
+	case GAMESTATE.LOOT:{break;}
+	case GAMESTATE.PAUSE:{break;}
 }

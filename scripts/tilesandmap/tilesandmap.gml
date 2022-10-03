@@ -7,19 +7,23 @@
 #macro GAMETILEWIDTH  MAPWIDTH * DUNGEONWIDTH
 #macro GAMETILEHEIGHT MAPHEIGHT * DUNGEONHEIGHT
 #macro MONSTERCHANCE  5
+#macro LOOTCHANCE  5
+#macro SPIKECHANCE 5
 
 enum TILECONTENTS
 {
 	NONE,
 	WALL,
 	SPIKES,
-	HOLE
+	HOLE,
+	LOOT
 }
 
 global.open =   [TILECONTENTS.NONE]
 global.wall =   [TILECONTENTS.WALL]
 global.spikes = [TILECONTENTS.SPIKES, 1]
 global.hole =   [TILECONTENTS.HOLE, 1]
+global.loot =   [TILECONTENTS.LOOT]
 
 function Tile() constructor
 {
@@ -34,6 +38,11 @@ function Tile() constructor
 	function set_contents(_contents)
 	{
 		contents = _contents
+	}
+	
+	function set_no_contents(_contents)
+	{
+		contents = global.open
 	}
 	
 	function get_occupant()
@@ -168,7 +177,10 @@ function Dungeon() constructor
 					{
 						if(dungeon[# i, j].get_tile(m, n).get_contents()[0] != TILECONTENTS.WALL)
 						{
-							if(irandom(100) < MONSTERCHANCE) dungeon[# i, j].get_tile(m, n).set_occupant(new Enemy(m, n))
+							     if(irandom(100) < MONSTERCHANCE) dungeon[# i, j].get_tile(m, n).set_occupant(new Enemy(m, n))
+							else if(irandom(100) < SPIKECHANCE) dungeon[# i, j].get_tile(m, n).set_contents(global.spikes)
+							else if(irandom(100) < LOOTCHANCE) dungeon[# i, j].get_tile(m, n).set_contents(global.loot)
+							
 						}
 					}
 				}	

@@ -89,6 +89,7 @@ switch state
 	}
 	case GAMESTATE.DISCARD:
 	{
+		if(gMap.get_tile(gPlayer.get_x(), gPlayer.get_y()).get_contents()[0] == TILECONTENTS.LOOT){state = GAMESTATE.LOOT; break;}
 		while(gPlayer.get_hand().get_current_size())
 		{
 			gPlayer.get_deck().discard(gPlayer.get_hand().remove_card(gPlayer.get_hand().get_top_card()))
@@ -103,9 +104,8 @@ switch state
 		{
 			if(run_card)
 			{
-				if(array_length(enemy_list[enemyIndex].get_path()) == 0) enemy_list[enemyIndex].set_path(pathfinding(enemy_list[enemyIndex], gPlayer))
-				if(array_length(enemy_list[enemyIndex].get_path()) != 0) enemy_list[enemyIndex].move()
-				//else enemy_list[enemyIndex].current_ap = 0
+				
+				enemy_list[enemyIndex].move()
 				run_card = false
 				alarm[1] = 30
 			}
@@ -120,4 +120,6 @@ switch state
 		break;
 	}
 	case GAMESTATE.PAUSE:{break;}
+	case GAMESTATE.LOOT:{
+	print("YESSIR")break;}
 }

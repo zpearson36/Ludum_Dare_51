@@ -37,6 +37,10 @@ function Player() constructor
 				{
 					hp -= tmpTile.get_contents()[1]
 				}
+				case TILECONTENTS.LOOT:
+				{
+					oGameManager.loot()
+				}
 				case TILECONTENTS.NONE:
 				{
 					xpos += _x

@@ -26,6 +26,7 @@
     {"id":{"name":"rMainMenu","path":"rooms/rMainMenu/rMainMenu.yy",},"order":2,},
     {"id":{"name":"spr_checkbox","path":"sprites/spr_checkbox/spr_checkbox.yy",},"order":18,},
     {"id":{"name":"point_click_sprite","path":"scripts/point_click_sprite/point_click_sprite.yy",},"order":5,},
+    {"id":{"name":"sLoot","path":"sprites/sLoot/sLoot.yy",},"order":22,},
     {"id":{"name":"click_rectangle","path":"scripts/click_rectangle/click_rectangle.yy",},"order":0,},
     {"id":{"name":"draw_slider_sprite","path":"scripts/draw_slider_sprite/draw_slider_sprite.yy",},"order":9,},
     {"id":{"name":"hover_rectangle","path":"scripts/hover_rectangle/hover_rectangle.yy",},"order":2,},
