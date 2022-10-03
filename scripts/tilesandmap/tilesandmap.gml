@@ -94,7 +94,7 @@ function Map(_mWidth, _mHeight) constructor
 			{
 				if(get_tile(i, j).get_occupant())// and 
 				{
-					if(not get_tile(i, j).get_occupant().isPlayer())array_push(occupants, get_tile(i, j).get_occupant())
+					if(not get_tile(i, j).get_occupant().isPlayer()) array_push(occupants, get_tile(i, j).get_occupant())
 				}
 			}
 		}

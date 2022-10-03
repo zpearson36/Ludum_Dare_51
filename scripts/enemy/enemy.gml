@@ -7,6 +7,8 @@ function Enemy(_x=3, _y=2) constructor
 	max_ap = 2
 	current_ap = 2
 	
+	path = []
+	
 	function get_hp()
 	{
 		return hp
@@ -20,48 +22,19 @@ function Enemy(_x=3, _y=2) constructor
 	function move()
 	{
 		oGameManager.get_map().get_tile(xpos, ypos).set_no_occupant()
-		//moves enemy closer to player
-		var up    = point_distance(oGameManager.get_player().get_x(), oGameManager.get_player().get_y(), xpos, ypos - 1)
-		var down  = point_distance(oGameManager.get_player().get_x(), oGameManager.get_player().get_y(), xpos, ypos + 1)
-		var left  = point_distance(oGameManager.get_player().get_x(), oGameManager.get_player().get_y(), xpos - 1, ypos)
-		var right = point_distance(oGameManager.get_player().get_x(), oGameManager.get_player().get_y(), xpos + 1, ypos)
 		
-		var dir = min(up, down, left, right)
-		switch(dir)
+		var nxt = path[array_length(path) - 1]
+		
+		print(string(nxt[0] - xpos) + ", " + string(nxt[1] - ypos))
+		if(oGameManager.get_map().get_tile(nxt[0], nxt[1]).get_occupant() == noone)
 		{
-			case up   :
-			{
-				if(oGameManager.get_map().get_tile(xpos, ypos - 1).get_occupant() == noone)
-					ypos -= 1;
-				else if(oGameManager.get_map().get_tile(xpos, ypos - 1).get_occupant() == oGameManager.get_player())
-				    oGameManager.get_player().damage(1)
-				break;
-			}
-			case down :
-			{
-				if(oGameManager.get_map().get_tile(xpos, ypos + 1).get_occupant() == noone)
-					ypos += 1;
-				else if(oGameManager.get_map().get_tile(xpos, ypos + 1).get_occupant() == oGameManager.get_player())
-				    oGameManager.get_player().damage(1)
-				break;
-			}
-			case left :
-			{
-				if(oGameManager.get_map().get_tile(xpos - 1, ypos).get_occupant() == noone)
-					xpos -= 1;
-				else if(oGameManager.get_map().get_tile(xpos - 1, ypos).get_occupant() == oGameManager.get_player())
-				    oGameManager.get_player().damage(1)
-				break;
-			}
-			case right:
-			{
-				if(oGameManager.get_map().get_tile(xpos + 1, ypos).get_occupant() == noone)
-					xpos += 1;
-				else if(oGameManager.get_map().get_tile(xpos + 1, ypos).get_occupant() == oGameManager.get_player())
-				    oGameManager.get_player().damage(1)
-				break;
-			}
+			xpos+=(nxt[0] - xpos);
+			ypos+=(nxt[1] - ypos);
+			array_delete(path, array_length(path) - 1, 1)
 		}
+		else if(oGameManager.get_map().get_tile(nxt[0], nxt[1]).get_occupant() == oGameManager.get_player())
+				    oGameManager.get_player().damage(1)
+		
 		
 	   	oGameManager.get_map().get_tile(xpos, ypos).set_occupant(self)
 		current_ap -= 1  
@@ -90,5 +63,20 @@ function Enemy(_x=3, _y=2) constructor
 	function isPlayer()
 	{
 		return false
+	}
+	
+	function get_path()
+	{
+		return path
+	}
+	
+	function set_path(_path)
+	{
+		path = _path
+	}
+	
+	function reset_path()
+	{
+		path = []
 	}
 }

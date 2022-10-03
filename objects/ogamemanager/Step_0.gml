@@ -103,13 +103,16 @@ switch state
 		{
 			if(run_card)
 			{
-				enemy_list[enemyIndex].move()
+				if(array_length(enemy_list[enemyIndex].get_path()) == 0) enemy_list[enemyIndex].set_path(pathfinding(enemy_list[enemyIndex], gPlayer))
+				if(array_length(enemy_list[enemyIndex].get_path()) != 0) enemy_list[enemyIndex].move()
+				//else enemy_list[enemyIndex].current_ap = 0
 				run_card = false
 				alarm[1] = 30
 			}
 			if(enemy_list[enemyIndex].get_ap() == 0)
 			{
 				enemy_list[enemyIndex].reset_ap()
+				enemy_list[enemyIndex].reset_path()
 				enemyIndex += 1
 			}
 		}
