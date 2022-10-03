@@ -23,26 +23,22 @@ function Player() constructor
 		hp = min(hp + _hp, max_hp)
 	}
 	
-	function move(_x, _y)
+	function move(_x, _y, room_transition=false)
 	{
 		var str = ""
 		oGameManager.get_map().get_tile(xpos, ypos).set_no_occupant()
 		var tmpTile = oGameManager.gMap.get_tile(xpos + _x, ypos + _y)
-		if(tmpTile.get_occupant() == noone)
+		if(tmpTile.get_occupant() == noone or room_transition)
 		{
-			str += "1"
 			switch(tmpTile.get_contents()[0])
 			{
-				case TILECONTENTS.WALL:{
-			str += "2"; break;}
+				case TILECONTENTS.WALL:{break;}
 				case TILECONTENTS.SPIKES:
 				{
-			str += "3"
 					hp -= tmpTile.get_contents()[1]
 				}
 				case TILECONTENTS.NONE:
 				{
-			str += "4"
 					xpos += _x
 					ypos += _y
 					break;

@@ -162,9 +162,9 @@ function Dungeon() constructor
 		{
 			for(var j = 0; j < DUNGEONHEIGHT; j++)
 			{
-				for(var m = 0; m < MAPWIDTH; m++)
+				for(var m = 1; m < MAPWIDTH - 1; m++)
 				{
-					for(var n = 0; n < MAPHEIGHT; n++)
+					for(var n = 1; n < MAPHEIGHT - 1; n++)
 					{
 						if(dungeon[# i, j].get_tile(m, n).get_contents()[0] != TILECONTENTS.WALL)
 						{
