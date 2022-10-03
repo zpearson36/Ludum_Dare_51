@@ -7,7 +7,7 @@ gMap = gDungeon.get_map(3,3)
 //gPlayer = instance_create_layer(0, 0, "Player", oPlayer)
 gPlayer = new Player()
 
-enemy_list = []
+enemy_list = gMap.get_occupants()
 
 
 //array_push(enemy_list, new Enemy())
@@ -102,4 +102,18 @@ function unpause()
 function quit()
 {
 	room_goto(rMainMenu)
+}
+
+function change_room(_dir)
+{
+	gMap.get_tile(gPlayer.get_x(), gPlayer.get_y()).set_no_occupant();
+	switch(_dir)
+	{
+		case "left": {gMap = gDungeon.move_left(); gPlayer.move(  (MAPWIDTH - 1), 0);break;}
+		case "right":{gMap = gDungeon.move_right();gPlayer.move( -(MAPWIDTH - 1), 0);break;}
+		case "up":   {gMap = gDungeon.move_up();   gPlayer.move(0,  (MAPHEIGHT - 1));break;}
+		case "down" :{gMap = gDungeon.move_down(); gPlayer.move(0, -(MAPHEIGHT - 1));break;}
+	}
+	enemy_list = gMap.get_occupants()
+	//print(enemy_list)
 }

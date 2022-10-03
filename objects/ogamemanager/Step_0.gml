@@ -66,10 +66,10 @@ switch state
 							case "D": {_x += 1; break;}
 						}
 					}
-					     if(gPlayer.get_x() + _x < 0)          {gMap.get_tile(gPlayer.get_x(), gPlayer.get_y()).set_no_occupant(); gMap = gDungeon.move_left(); gPlayer.move(  (MAPWIDTH - 1), 0)}
-					else if(gPlayer.get_x() + _x >= MAPWIDTH)  {gMap.get_tile(gPlayer.get_x(), gPlayer.get_y()).set_no_occupant(); gMap = gDungeon.move_right();gPlayer.move( -(MAPWIDTH - 1), 0)}
-					else if(gPlayer.get_y() + _y < 0)          {gMap.get_tile(gPlayer.get_x(), gPlayer.get_y()).set_no_occupant(); gMap = gDungeon.move_up();   gPlayer.move(0,  (MAPHEIGHT - 1))}
-					else if(gPlayer.get_y() + _y >= MAPHEIGHT) {gMap.get_tile(gPlayer.get_x(), gPlayer.get_y()).set_no_occupant(); gMap = gDungeon.move_down(); gPlayer.move(0, -(MAPHEIGHT - 1))}
+					     if(gPlayer.get_x() + _x < 0)          {change_room("left")}
+					else if(gPlayer.get_x() + _x >= MAPWIDTH)  {change_room("right")}
+					else if(gPlayer.get_y() + _y < 0)          {change_room("up")}
+					else if(gPlayer.get_y() + _y >= MAPHEIGHT) {change_room("down")}
 					else gPlayer.move(_x, _y)
 					break;
 				}

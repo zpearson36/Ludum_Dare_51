@@ -1,7 +1,7 @@
-function Enemy() constructor
+function Enemy(_x=3, _y=2) constructor
 {
-	xpos = 3
-	ypos = 2
+	xpos = _x
+	ypos = _y
 	sprite = sEnemy
 	hp = 5
 	max_ap = 2
@@ -85,5 +85,10 @@ function Enemy() constructor
 	function get_y()
 	{
 		return ypos
+	}
+	
+	function isPlayer()
+	{
+		return false
 	}
 }

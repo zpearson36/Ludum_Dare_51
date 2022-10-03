@@ -6,6 +6,7 @@
 #macro DUNGEONHEIGHT  4
 #macro GAMETILEWIDTH  MAPWIDTH * DUNGEONWIDTH
 #macro GAMETILEHEIGHT MAPHEIGHT * DUNGEONHEIGHT
+#macro MONSTERCHANCE  5
 
 enum TILECONTENTS
 {
@@ -83,6 +84,22 @@ function Map(_mWidth, _mHeight) constructor
 	{
 		return tileGrid[# _x, _y]
 	}
+	
+	function get_occupants()
+	{
+		var occupants = []
+		for(var i = 0; i < MAPWIDTH; i++)
+		{
+			for(var j = 0; j < MAPHEIGHT; j++)
+			{
+				if(get_tile(i, j).get_occupant())// and 
+				{
+					if(not get_tile(i, j).get_occupant().isPlayer())array_push(occupants, get_tile(i, j).get_occupant())
+				}
+			}
+		}
+		return occupants
+	}
 }
 
 
@@ -129,7 +146,6 @@ function Dungeon() constructor
 						var noWall = false
 						if(dungeon[# i, j].get_tile(m, n).get_contents()[0] == TILECONTENTS.WALL)
 						{
-							print(string(i) + ", " + string(j) + ", " + string(n) + ", " + string(m))
 						    if(n == 0 and j > 0 and dungeon[# i, j - 1].get_tile(m, MAPHEIGHT - 1).get_contents()[0] != TILECONTENTS.WALL) noWall = true
 						    if(n == MAPHEIGHT - 1 and j < DUNGEONHEIGHT - 1 and dungeon[# i, j + 1].get_tile(m, 0).get_contents()[0] != TILECONTENTS.WALL) noWall = true
 							if(m == 0 and i > 0 and dungeon[# i - 1, j].get_tile(MAPWIDTH - 1, n).get_contents()[0] != TILECONTENTS.WALL) noWall = true
@@ -139,6 +155,23 @@ function Dungeon() constructor
 						if(noWall) dungeon[# i, j].get_tile(m, n).set_contents(global.open)
 					}
 				}
+			}
+		}
+		//populate with enemies
+		for(var i = 0; i < DUNGEONWIDTH; i++)
+		{
+			for(var j = 0; j < DUNGEONHEIGHT; j++)
+			{
+				for(var m = 0; m < MAPWIDTH; m++)
+				{
+					for(var n = 0; n < MAPHEIGHT; n++)
+					{
+						if(dungeon[# i, j].get_tile(m, n).get_contents()[0] != TILECONTENTS.WALL)
+						{
+							if(irandom(100) < MONSTERCHANCE) dungeon[# i, j].get_tile(m, n).set_occupant(new Enemy(m, n))
+						}
+					}
+				}	
 			}
 		}
 	}

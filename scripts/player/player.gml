@@ -102,4 +102,9 @@ function Player() constructor
 	{
 		hp -= _dmg
 	}
+	
+	function isPlayer()
+	{
+		return true
+	}
 }
